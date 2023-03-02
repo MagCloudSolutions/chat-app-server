@@ -1,5 +1,15 @@
-const io = require("socket.io")();
+const express = require("express");
+const app = express();
+const http = require("http").createServer(app);
 
+const PORT = process.env.PORT || 8000;
+
+http.listen(PORT, () => {
+	console.log(`Listening on port ${PORT}`);
+});
+
+// Socket
+const io = require("socket.io")(http);
 
 const users = {};
 
