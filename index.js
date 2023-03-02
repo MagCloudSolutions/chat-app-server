@@ -1,4 +1,6 @@
-const io = require("socket.io")(8080);
+const {Server} = require("socket.io");
+const io = new Server(server);
+const PORT = process.env.PORT || 3000;
 
 const users = {};
 
@@ -20,4 +22,8 @@ io.on("connection", (socket) => {
 		socket.broadcast.emit("left", users[socket.id]);
 		delete users[socket.id];
 	});
+});
+
+server.listen(PORT, () => {
+console.log(`Listening on Port: ${PORT}`);
 });
