@@ -1,5 +1,5 @@
-const io = require("socket.io")(PORT);
-const PORT = process.env.PORT || 3000;
+const io = require("socket.io")(process.env.PORT);
+
 
 const users = {};
 
