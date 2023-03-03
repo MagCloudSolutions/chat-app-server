@@ -2,8 +2,15 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const http = require("http").createServer(app);
+const io = require("socket.io")(http, {
+	cors: {
+		origin: "*",
 
-app.use(cors());
+		credentials: true,
+	},
+});
+
+// app.use(cors({ origin: ["*", "http://127.0.0.1:5500"] }));
 
 const PORT = process.env.PORT || 8000;
 
@@ -12,7 +19,6 @@ http.listen(PORT, () => {
 });
 
 // Socket
-const io = require("socket.io")(http);
 
 const users = {};
 
