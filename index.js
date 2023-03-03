@@ -1,15 +1,10 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const http = require("http").createServer(app);
 
-const cors = require("cors");
 
-// CORS is enabled for all origins
-app.use(
-	cors({
-		origin: "*",
-	})
-);
+app.use(cors());
 
 const PORT = process.env.PORT || 8000;
 
